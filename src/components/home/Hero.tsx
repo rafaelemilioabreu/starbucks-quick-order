@@ -1,7 +1,7 @@
-
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Coffee } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import BlurImage from '../ui/BlurImage';
 
 const Hero = () => {

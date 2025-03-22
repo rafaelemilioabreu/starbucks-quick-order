@@ -4,7 +4,7 @@ import PageTransition from '../components/layout/PageTransition';
 import Navbar from '../components/layout/Navbar';
 import Hero from '../components/home/Hero';
 import Features from '../components/home/Features';
-import { ArrowRight, Coffee, CookingPot, Clock } from 'lucide-react';
+import { ArrowRight, Coffee, CookingPot, Clock, QrCode } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BlurImage from '../components/ui/BlurImage';
 
