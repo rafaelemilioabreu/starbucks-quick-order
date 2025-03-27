@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Coffee, ShoppingBag, User } from 'lucide-react';
+import { Menu, X, Coffee, ShoppingBag, User, HelpCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -17,6 +17,7 @@ const Navbar = () => {
     { name: 'Pedir Ahora', path: '/mobile-order' },
     { name: 'Mesa con QR', path: '/qr-order' },
     { name: 'Dashboard', path: '/dashboard' },
+    { name: 'FAQ', path: '/faq' },
   ];
 
   useEffect(() => {
@@ -86,6 +87,13 @@ const Navbar = () => {
             <ShoppingBag className="h-5 w-5" />
           </Link>
           <Link 
+            to="/faq" 
+            className="rounded-full p-2 hover:bg-muted transition-colors"
+            aria-label="FAQ"
+          >
+            <HelpCircle className="h-5 w-5" />
+          </Link>
+          <Link 
             to="/profile" 
             className="rounded-full p-2 hover:bg-muted transition-colors"
             aria-label="Profile"
@@ -140,6 +148,17 @@ const Navbar = () => {
                   <ShoppingBag className="h-6 w-6" />
                 </div>
                 <span className="text-xs">Ordenar</span>
+              </Link>
+              <Link 
+                to="/faq" 
+                className="flex flex-col items-center space-y-1"
+                onClick={closeMenu}
+                aria-label="FAQ"
+              >
+                <div className="rounded-full p-3 bg-muted">
+                  <HelpCircle className="h-6 w-6" />
+                </div>
+                <span className="text-xs">FAQ</span>
               </Link>
               <Link 
                 to="/profile" 

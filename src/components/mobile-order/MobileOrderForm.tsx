@@ -1,8 +1,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Coffee, ChevronDown, Plus, Minus, Clock, CreditCard } from 'lucide-react';
+import { Coffee, ChevronDown, Plus, Minus, Clock, CreditCard, MapPin } from 'lucide-react';
 import BlurImage from '../ui/BlurImage';
+import LocationSelector from './LocationSelector';
 
 const coffeeOptions = [
   {
@@ -55,6 +56,7 @@ const MobileOrderForm = () => {
   const [selectedMilk, setSelectedMilk] = useState(milkOptions[0]);
   const [quantity, setQuantity] = useState(1);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState<any>(null);
   
   const incrementQuantity = () => setQuantity(q => q + 1);
   const decrementQuantity = () => setQuantity(q => Math.max(1, q - 1));
@@ -69,6 +71,10 @@ const MobileOrderForm = () => {
       // Reset after 3 seconds
       setTimeout(() => setOrderSuccess(false), 3000);
     }, 1000);
+  };
+
+  const handleSelectLocation = (location: any) => {
+    setSelectedLocation(location);
   };
   
   return (
@@ -90,10 +96,18 @@ const MobileOrderForm = () => {
             <Clock className="h-5 w-5 mr-2" />
             <span>Tiempo estimado: 5-7 min</span>
           </div>
+          {selectedLocation && (
+            <div className="mt-4 inline-flex items-center px-4 py-2 rounded-full bg-white/50 text-starbucks-darkgreen">
+              <MapPin className="h-5 w-5 mr-2" />
+              <span>Ubicación: {selectedLocation.name}</span>
+            </div>
+          )}
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-8">
+            <LocationSelector onSelectLocation={handleSelectLocation} />
+            
             <div>
               <h3 className="text-lg font-medium mb-4">Selecciona tu café</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
