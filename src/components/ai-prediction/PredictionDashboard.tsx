@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
@@ -202,7 +201,12 @@ const PredictionDashboard = () => {
                     <YAxis tick={{ fontSize: 12 }} />
                     <Tooltip 
                       contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }}
-                      formatter={(value, name) => [`${value} pedidos`, name.charAt(0).toUpperCase() + name.slice(1)]}
+                      formatter={(value, name) => [
+                        `${value} pedidos`, 
+                        typeof name === 'string' 
+                          ? name.charAt(0).toUpperCase() + name.slice(1) 
+                          : String(name)
+                      ]}
                     />
                     <Bar dataKey="americano" name="Americano" fill="#006241" radius={[4, 4, 0, 0]} />
                     <Bar dataKey="latte" name="Latte" fill="#1e3932" radius={[4, 4, 0, 0]} />
@@ -248,7 +252,7 @@ const PredictionDashboard = () => {
                       contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }}
                       formatter={(value, name) => [
                         name === 'temp' ? `${value}°C` : name === 'orders' ? `${value} pedidos` : value,
-                        name === 'temp' ? 'Temperatura' : name === 'orders' ? 'Pedidos' : name
+                        name === 'temp' ? 'Temperatura' : name === 'orders' ? 'Pedidos' : String(name)
                       ]}
                     />
                     <Line 
