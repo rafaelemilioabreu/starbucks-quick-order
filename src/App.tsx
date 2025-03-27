@@ -10,6 +10,7 @@ import MobileOrder from "./pages/MobileOrder";
 import QROrder from "./pages/QROrder";
 import Dashboard from "./pages/Dashboard";
 import FAQ from "./pages/FAQ";
+import Credits from "./pages/Credits";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/qr-order" element={<QROrder />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/credits" element={<Credits />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

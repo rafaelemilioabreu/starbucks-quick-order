@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Coffee, ShoppingBag, User, HelpCircle } from 'lucide-react';
+import { Menu, X, Coffee, ShoppingBag, User, HelpCircle, Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: 'Mesa con QR', path: '/qr-order' },
     { name: 'Dashboard', path: '/dashboard' },
     { name: 'FAQ', path: '/faq' },
+    { name: 'Créditos', path: '/credits' },
   ];
 
   useEffect(() => {
@@ -94,11 +95,11 @@ const Navbar = () => {
             <HelpCircle className="h-5 w-5" />
           </Link>
           <Link 
-            to="/profile" 
+            to="/credits" 
             className="rounded-full p-2 hover:bg-muted transition-colors"
-            aria-label="Profile"
+            aria-label="Credits"
           >
-            <User className="h-5 w-5" />
+            <Code className="h-5 w-5" />
           </Link>
         </div>
 
@@ -161,15 +162,15 @@ const Navbar = () => {
                 <span className="text-xs">FAQ</span>
               </Link>
               <Link 
-                to="/profile" 
+                to="/credits" 
                 className="flex flex-col items-center space-y-1"
                 onClick={closeMenu}
-                aria-label="Profile"
+                aria-label="Credits"
               >
                 <div className="rounded-full p-3 bg-muted">
-                  <User className="h-6 w-6" />
+                  <Code className="h-6 w-6" />
                 </div>
-                <span className="text-xs">Perfil</span>
+                <span className="text-xs">Créditos</span>
               </Link>
             </div>
           </div>
