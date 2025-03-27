@@ -28,36 +28,31 @@ const Credits = () => {
               <div className="bg-starbucks-lightgreen/20 p-6 rounded-xl shadow-sm">
                 <p className="font-bold text-xl mb-1">Carlos Polanco</p>
                 <p className="text-muted-foreground mb-4">23-1102</p>
-                <p className="text-sm">Desarrollador Frontend</p>
               </div>
               
               <div className="bg-starbucks-lightgreen/20 p-6 rounded-xl shadow-sm">
                 <p className="font-bold text-xl mb-1">Joan de Jesús</p>
                 <p className="text-muted-foreground mb-4">23-1122</p>
-                <p className="text-sm">Desarrollador Backend</p>
               </div>
               
               <div className="bg-starbucks-lightgreen/20 p-6 rounded-xl shadow-sm">
                 <p className="font-bold text-xl mb-1">Mario Guzmán</p>
                 <p className="text-muted-foreground mb-4">23-1061</p>
-                <p className="text-sm">Diseñador UI/UX</p>
               </div>
               
               <div className="bg-starbucks-lightgreen/20 p-6 rounded-xl shadow-sm">
                 <p className="font-bold text-xl mb-1">Rafael Abreu</p>
                 <p className="text-muted-foreground mb-4">23-1058</p>
-                <p className="text-sm">Ingeniero de QA</p>
               </div>
               
               <div className="bg-starbucks-lightgreen/20 p-6 rounded-xl shadow-sm">
                 <p className="font-bold text-xl mb-1">Katherine Langumás</p>
                 <p className="text-muted-foreground mb-4">23-1045</p>
-                <p className="text-sm">Gerente de Proyecto</p>
               </div>
             </div>
             
             <div className="mt-16 text-center">
-              <p className="text-muted-foreground">© 2023 - Proyecto académico INTEC</p>
+              <p className="text-muted-foreground">© 202 - Proyecto académico UNIBE</p>
             </div>
           </div>
         </div>
