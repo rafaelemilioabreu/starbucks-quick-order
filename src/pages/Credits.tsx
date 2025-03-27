@@ -52,7 +52,7 @@ const Credits = () => {
             </div>
             
             <div className="mt-16 text-center">
-              <p className="text-muted-foreground">© 202 - Proyecto académico UNIBE</p>
+              <p className="text-muted-foreground">© 2025 - Proyecto académico UNIBE</p>
             </div>
           </div>
         </div>
