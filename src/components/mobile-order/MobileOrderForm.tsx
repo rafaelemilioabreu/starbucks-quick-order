@@ -4,6 +4,13 @@ import { motion } from 'framer-motion';
 import { Coffee, ChevronDown, Plus, Minus, Clock, CreditCard, MapPin } from 'lucide-react';
 import BlurImage from '../ui/BlurImage';
 import LocationSelector from './LocationSelector';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog';
 
 const coffeeOptions = [
   {
@@ -57,6 +64,7 @@ const MobileOrderForm = () => {
   const [quantity, setQuantity] = useState(1);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<any>(null);
+  const [locationDialogOpen, setLocationDialogOpen] = useState(false);
   
   const incrementQuantity = () => setQuantity(q => q + 1);
   const decrementQuantity = () => setQuantity(q => Math.max(1, q - 1));
@@ -65,6 +73,12 @@ const MobileOrderForm = () => {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!selectedLocation) {
+      setLocationDialogOpen(true);
+      return;
+    }
+    
     // Simulate order processing
     setTimeout(() => {
       setOrderSuccess(true);
@@ -75,6 +89,7 @@ const MobileOrderForm = () => {
 
   const handleSelectLocation = (location: any) => {
     setSelectedLocation(location);
+    setLocationDialogOpen(false);
   };
   
   return (
@@ -106,7 +121,59 @@ const MobileOrderForm = () => {
       ) : (
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-8">
-            <LocationSelector onSelectLocation={handleSelectLocation} />
+            {/* Location Selection - With Dialog */}
+            <div className="bg-white rounded-xl p-4 border border-border/40 shadow-subtle">
+              <h3 className="text-lg font-medium mb-3">Ubicación de recogida</h3>
+              
+              {selectedLocation ? (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-starbucks-green/10 p-2 rounded-full">
+                      <MapPin className="h-5 w-5 text-starbucks-green" />
+                    </div>
+                    <div>
+                      <p className="font-medium">{selectedLocation.name}</p>
+                      <p className="text-xs text-muted-foreground truncate max-w-[250px]">{selectedLocation.address}</p>
+                    </div>
+                  </div>
+                  
+                  <Dialog open={locationDialogOpen} onOpenChange={setLocationDialogOpen}>
+                    <DialogTrigger asChild>
+                      <button 
+                        type="button"
+                        className="text-sm text-starbucks-green hover:text-starbucks-green/80 transition-colors"
+                      >
+                        Cambiar
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <DialogHeader>
+                        <DialogTitle>Selecciona una ubicación</DialogTitle>
+                      </DialogHeader>
+                      <LocationSelector onSelectLocation={handleSelectLocation} />
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              ) : (
+                <Dialog open={locationDialogOpen} onOpenChange={setLocationDialogOpen}>
+                  <DialogTrigger asChild>
+                    <button 
+                      type="button"
+                      className="w-full flex items-center justify-center space-x-2 bg-starbucks-lightgreen hover:bg-starbucks-lightgreen/90 text-starbucks-darkgreen font-medium py-3 px-4 rounded-lg transition-colors"
+                    >
+                      <MapPin className="h-5 w-5" />
+                      <span>Seleccionar ubicación</span>
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Selecciona una ubicación</DialogTitle>
+                    </DialogHeader>
+                    <LocationSelector onSelectLocation={handleSelectLocation} />
+                  </DialogContent>
+                </Dialog>
+              )}
+            </div>
             
             <div>
               <h3 className="text-lg font-medium mb-4">Selecciona tu café</h3>
@@ -267,11 +334,22 @@ const MobileOrderForm = () => {
               
               <button
                 type="submit"
-                className="mt-6 w-full flex items-center justify-center space-x-2 bg-starbucks-green hover:bg-starbucks-green/90 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+                className={`mt-6 w-full flex items-center justify-center space-x-2 ${
+                  !selectedLocation 
+                    ? 'bg-gray-300 cursor-not-allowed' 
+                    : 'bg-starbucks-green hover:bg-starbucks-green/90'
+                } text-white font-medium py-3 px-4 rounded-lg transition-colors`}
+                disabled={!selectedLocation}
               >
                 <CreditCard className="h-5 w-5" />
                 <span>Pagar y ordenar ahora</span>
               </button>
+              
+              {!selectedLocation && (
+                <p className="text-xs text-orange-500 mt-2 text-center">
+                  Selecciona una ubicación para continuar
+                </p>
+              )}
             </div>
             
             <div className="bg-starbucks-lightgreen rounded-xl p-4 flex items-center">
