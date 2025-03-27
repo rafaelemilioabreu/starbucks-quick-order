@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { Map, MapPin, Search } from 'lucide-react';
 
-// Datos de ejemplo de ubicaciones de Starbucks
+// Datos de ejemplo de ubicaciones de Starbucks en República Dominicana
 const starbucksLocations = [
   {
     id: 1,
-    name: "Starbucks Reforma",
-    address: "Av. Paseo de la Reforma 222, Juárez, 06600 Ciudad de México",
+    name: "Starbucks Blue Mall",
+    address: "Av. Winston Churchill, Blue Mall, Santo Domingo",
     distance: "0.8 km",
     isOpen: true,
     openUntil: "22:00",
@@ -15,8 +15,8 @@ const starbucksLocations = [
   },
   {
     id: 2,
-    name: "Starbucks Condesa",
-    address: "Av. Michoacán 25, Hipódromo Condesa, 06170 Ciudad de México",
+    name: "Starbucks Ágora Mall",
+    address: "Av. John F. Kennedy, Ágora Mall, Santo Domingo",
     distance: "1.2 km",
     isOpen: true,
     openUntil: "23:00",
@@ -24,8 +24,8 @@ const starbucksLocations = [
   },
   {
     id: 3,
-    name: "Starbucks Polanco",
-    address: "Av. Presidente Masaryk 61, Polanco, 11560 Ciudad de México",
+    name: "Starbucks Sambil",
+    address: "Av. John F. Kennedy, Centro Comercial Sambil, Santo Domingo",
     distance: "3.5 km",
     isOpen: true,
     openUntil: "21:00",
@@ -33,21 +33,39 @@ const starbucksLocations = [
   },
   {
     id: 4,
-    name: "Starbucks Santa Fe",
-    address: "Centro Comercial Santa Fe, Vasco de Quiroga 3800, Santa Fe, 05109 Ciudad de México",
-    distance: "8.7 km",
+    name: "Starbucks Downtown Center",
+    address: "Av. 27 de Febrero, Downtown Center, Santo Domingo",
+    distance: "4.7 km",
     isOpen: true,
     openUntil: "22:30",
     waitTime: "~3 min"
   },
   {
     id: 5,
-    name: "Starbucks Coyoacán",
-    address: "Av. Miguel Ángel de Quevedo 870, Coyoacán, 04000 Ciudad de México",
+    name: "Starbucks Galería 360",
+    address: "Av. John F. Kennedy, Galería 360, Santo Domingo",
     distance: "5.3 km",
     isOpen: true,
     openUntil: "21:30",
     waitTime: "~7 min"
+  },
+  {
+    id: 6,
+    name: "Starbucks Punta Cana",
+    address: "BlueMall Puntacana, Bulevar Turístico del Este, Punta Cana",
+    distance: "198 km",
+    isOpen: true,
+    openUntil: "22:00",
+    waitTime: "~4 min"
+  },
+  {
+    id: 7,
+    name: "Starbucks Santiago",
+    address: "Av. 27 de Febrero, Colinas Mall, Santiago",
+    distance: "155 km",
+    isOpen: true,
+    openUntil: "21:00",
+    waitTime: "~6 min"
   }
 ];
 
